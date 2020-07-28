@@ -1,1 +1,1 @@
--[@Ayush-Flash]('https://https://github.com/Ayush-Flash/')
+-[@Ayush-Flash](https://https://github.com/Ayush-Flash/)
