@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from './loginform.module.css';
+
 class loginForm extends Component {
     state = {
         username: '',
@@ -15,15 +16,15 @@ class loginForm extends Component {
     }
 
     onLoginClick = (event) => {
-        //do client side validation here....
+        //do validation over here....(http request to our restAPI)
+        event.preventDefault();
         const { username, password } = this.state; 
         if(username.length > 0 && password.length > 0) {
-                                  
+            console.log(username, password);
+            this.props.history.replace('/login/home');
         }        
-        console.log(this.state.username, this.state.password);
-        event.preventDefault();
     }
-
+    
     render() {
         return ( 
             <div className={styles.FormContainer}>
