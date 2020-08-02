@@ -10,8 +10,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isUserSignedIn: false
+      isUserSignedIn: true
     }
+  }
+
+  logInHandler = () => {
+    this.setState({isUserSignedIn : true});
   }
 
   logOutHandler = () => {
@@ -28,7 +32,7 @@ class App extends Component {
             <div>
               <Switch>
                 <Route path='/register' exact component={RegForm} />           
-                <Route path='/' component={LoginForm} />
+                <Route path='/' component={() => <LoginForm logInHandler={this.logInHandler}/>} />
               </Switch>
             </div> 
             : <div>

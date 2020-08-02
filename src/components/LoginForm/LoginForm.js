@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './loginform.module.css';
 
-class loginForm extends Component {
+class LoginForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -19,13 +19,12 @@ class loginForm extends Component {
     }
 
     onLoginClick = (event) => {
-        //do validation over here....(http request to our restAPI)
         event.preventDefault();
         const { username, password } = this.state; 
         if(username.length > 0 && password.length > 0) {
             console.log(username, password);
-            this.props.loginHandler();
-            // this.props.history.push({pathname : this.props.match.url + 'home'});
+            //do validation over here....(http request to our restAPI) then do the following
+            this.props.logInHandler();
         }        
     }
     
@@ -46,4 +45,4 @@ class loginForm extends Component {
     }
 }
  
-export default loginForm;
+export default LoginForm;
