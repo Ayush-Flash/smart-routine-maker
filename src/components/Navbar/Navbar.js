@@ -5,25 +5,14 @@ import { Link } from 'react-router-dom';
 class Navbar extends Component {
     render() {
         return (
-            <div>
-                {
-                    (!this.props.isUserSignedIn) ?
-                        <nav className={styles.navbar}>
-                            <ul className={styles.navlinks}>
-                                <Link to='/' className={styles.navlink}>Login</Link>
-                                <Link to='/register' className={styles.navlink}>Register</Link>
-                            </ul>
-                        </nav>
-                    :
-                    <nav className={styles.navbar}>
-                        <ul className={styles.navlinks}>
-                            <Link onClick={this.props.logOutHandler} to='/' className={styles.navlink}>Logout</Link>
-                        </ul>
-                    </nav>  
-                }
-            </div>
+            <nav className={styles.navbar}>
+                <ul className={styles.navlinks}>
+                    {Object.keys(this.props.mapping).map(route => <Link key={route} to={route} className={styles.navlink} onClick={(this.props.isUserSignedIn) ? this.props.logOutHandler : null}>{ this.props.mapping[route] }</Link>)}
+                </ul>
+            </nav>
         )
     }
 }
  
 export default Navbar;
+

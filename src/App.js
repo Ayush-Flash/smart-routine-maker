@@ -19,9 +19,10 @@ class App extends Component {
   }
 
   render() {
+    const mapping = (!this.state.isUserSignedIn) ? {'/': 'Login', '/register': 'Register'} : {'/': 'Logout'}; 
     return (
       <div className="App">
-        <Navbar isUserSignedIn={this.state.isUserSignedIn} logOutHandler={this.logOutHandler}/>
+        <Navbar isUserSignedIn={this.state.isUserSignedIn} logOutHandler={this.logOutHandler} mapping={mapping}/>
           {
             (!this.state.isUserSignedIn) ? 
             <div>
