@@ -1,25 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './navbar.module.css';
-import { Route, Link, Switch } from 'react-router-dom';
-import Home from '../Home/Home';
-import LoginForm from '../LoginForm/LoginForm';
-import RegForm from '../RegForm/RegForm';
-const Navbar = () => {
-    return (
-        <nav className={styles.navbar}>
-            <ul className={styles.navlinks}>
-                <div>
-                    <Link to='/' className={styles.navlink}>Login</Link>
-                    <Link to='/register' className={styles.navlink}>Register</Link>
-                </div>         
-            </ul>
-            <Switch>
-                <Route path='/login/home' exact component={Home} />
-                <Route path='/register' exact component={RegForm} />
-                <Route path='/' component={LoginForm} />
-            </Switch>
-        </nav>
-    );
+import { Link } from 'react-router-dom';
+
+class Navbar extends Component {
+    render() {
+        return (
+            <div>
+                {
+                    (!this.props.isUserSignedIn) ?
+                        <nav className={styles.navbar}>
+                            <ul className={styles.navlinks}>
+                                <Link to='/' className={styles.navlink}>Login</Link>
+                                <Link to='/register' className={styles.navlink}>Register</Link>
+                            </ul>
+                        </nav>
+                    :
+                    <nav className={styles.navbar}>
+                        <ul className={styles.navlinks}>
+                            <Link onClick={this.props.logOutHandler} to='/' className={styles.navlink}>Logout</Link>
+                        </ul>
+                    </nav>  
+                }
+            </div>
+        )
+    }
 }
  
 export default Navbar;

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
 class Home extends Component {
-    state = {  }
+
     render() { 
-        return ( <div>Home</div> );
+        return ( 
+            <div>
+                <p>Home</p>
+            </div> 
+        );
     }
 }
  

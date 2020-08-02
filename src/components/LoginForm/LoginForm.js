@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import styles from './loginform.module.css';
 
 class loginForm extends Component {
-    state = {
-        username: '',
-        password: ''
-    };
+    constructor(props) {
+        super(props)
+        this.state = {
+            username: '',
+            password: ''
+        };
+    }
 
     onUsernameChange = (event) => {
         this.setState({username: event.target.value});        
@@ -21,21 +24,24 @@ class loginForm extends Component {
         const { username, password } = this.state; 
         if(username.length > 0 && password.length > 0) {
             console.log(username, password);
-            this.props.history.replace('/login/home');
+            this.props.loginHandler();
+            // this.props.history.push({pathname : this.props.match.url + 'home'});
         }        
     }
     
     render() {
-        return ( 
-            <div className={styles.FormContainer}>
-                <form className={styles.FormBox} onSubmit={this.onLoginClick}>
-                    <h1 className={styles.FormHeader}>Login</h1>
-                    <hr className={styles.FormHeaderLine}/>
-                    <p><input className={styles.FormInput} onChange={this.onUsernameChange} value={this.state.username} type='text' id='username' placeholder='Username'/></p>
-                    <p><input className={styles.FormInput} onChange={this.onPasswordChange} value={this.state.password} type='password' id='password' placeholder='Password'/></p>
-                    <p><button className={styles.FormButton} type='submit'>Login</button></p>
-                </form>
-            </div> 
+        return (
+            <div>
+                <div className={styles.FormContainer}>
+                    <form className={styles.FormBox} onSubmit={this.onLoginClick}>
+                        <h1 className={styles.FormHeader}>Login</h1>
+                        <hr className={styles.FormHeaderLine}/>
+                        <p><input className={styles.FormInput} onChange={this.onUsernameChange} value={this.state.username} type='text' id='username' placeholder='Username'/></p>
+                        <p><input className={styles.FormInput} onChange={this.onPasswordChange} value={this.state.password} type='password' id='password' placeholder='Password'/></p>
+                        <p><button className={styles.FormButton} type='submit'>Login</button></p>
+                    </form>
+                </div> 
+            </div>
         );
     }
 }
