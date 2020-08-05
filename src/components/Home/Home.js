@@ -84,7 +84,7 @@ class Home extends Component {
         return ( 
             <div className={styles.HomeBody}>
                 <Route path='/home' exact component={() => <RoutineCards onAddRoutine={this.onAddRoutineHandler} handelCardClick={this.handelCardClick} routines={this.state.routines}/>} />
-                <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} />}/>
+                {(this.state.selectedRoutine != null) ? <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} />}/> : null}
             </div> 
         );
     }

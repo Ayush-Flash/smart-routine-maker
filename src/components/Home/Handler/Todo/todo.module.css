@@ -1,0 +1,48 @@
+.TodoCardContainer {
+    width: 70%;
+    margin: 10px 0px 10px 0px;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(243, 239, 239);
+    box-shadow: 0px 11px 54px 0px rgb(0, 0, 0, 0.75);
+}
+
+.TodoClassName {
+    font-family: 'Pacifico';
+    flex: 1;
+    margin-left: 10px;
+}
+
+.DeleteTodo {
+    padding: 0.8rem;
+    height: 1.1rem;
+    width: 5.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 5px 40px 0px rgb(0, 0, 0, 0.3);
+    background-color: rgb(236, 101, 101);
+    transition: 0.2s;
+}
+
+.TodoCheckBox {
+    height: 1rem;
+    width: 1rem;
+    cursor: pointer;
+}
+
+.DeleteTodo:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 700px) {
+    .TodoCardContainer {
+        width: 100%;
+    }   
+}
