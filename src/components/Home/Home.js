@@ -44,16 +44,16 @@ class Home extends Component {
                 },
                 {
                     id : '3',
-                    name: 'Fittness',
+                    name: 'Trip Plan',
                     todos: [
                         {
                             id: 1,
-                            todo: 'Push up',
+                            todo: 'Search for hotels',
                             isCompleted: false
                         },
                         {
                             id: 2,
-                            todo: 'Pull up',
+                            todo: 'Book hotel',
                             isCompleted: true
                         }
                     ]
@@ -69,11 +69,21 @@ class Home extends Component {
         this.props.history.push(this.props.match.url + '/handler')
     }
     
+    onAddRoutineHandler = (routineName) => {
+        const routines = [...this.state.routines];
+        const newRoutine = {
+            id: routines.length + 1,
+            name: routineName,
+            todos: [],
+        }
+        routines.push(newRoutine);
+        this.setState({routines : routines});
+    }
     
     render() { 
         return ( 
             <div className={styles.HomeBody}>
-                <Route path='/home' exact component={() => <RoutineCards handelCardClick={this.handelCardClick} routines={this.state.routines}/>} />
+                <Route path='/home' exact component={() => <RoutineCards onAddRoutine={this.onAddRoutineHandler} handelCardClick={this.handelCardClick} routines={this.state.routines}/>} />
                 <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} />}/>
             </div> 
         );

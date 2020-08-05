@@ -6,7 +6,8 @@ class RoutineCard extends Component {
     render() { 
         return (  
             <div onClick={() => this.props.handelCardClick(this.props.routine.id)} className={styles.CardContainer}>
-
+                <p className={styles.RoutineName}>{this.props.routine.name}</p>
+                <hr />
             </div>
         );
     }

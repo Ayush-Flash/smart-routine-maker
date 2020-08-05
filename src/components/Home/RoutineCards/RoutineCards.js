@@ -6,7 +6,7 @@ import AddRoutine from '../AddRoutine/AddRoutine'
 const routineCards = (props) => {
     return (  
         <div className={styles.CardsContainer}>
-            <AddRoutine />            
+            <AddRoutine onAddRoutine={props.onAddRoutine}/>            
             {props.routines.map(routine => <RoutineCard handelCardClick={props.handelCardClick} key={routine.id} routine={routine} />)}
         </div>
     );

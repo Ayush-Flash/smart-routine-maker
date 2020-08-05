@@ -10,6 +10,10 @@
     transition: 0.5s;
 }
 
+.RoutineName {
+    font-family: 'Pacifico', cursive;
+}
+
 .CardContainer:hover {
     transform: scale(1.1);
 }
