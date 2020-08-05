@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './home.module.css';
 import RoutineCards from './RoutineCards/RoutineCards';
-import Handler from '../Handler/Handler';
+import Handler from './Handler/Handler';
 import { Route } from 'react-router-dom';
 
 class Home extends Component {
