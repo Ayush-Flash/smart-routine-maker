@@ -11,7 +11,7 @@ class Home extends Component {
             selectedRoutine: null,
             routines : [
                 {
-                    id : '1',
+                    id : 1,
                     name: 'Career',
                     todos: [
                         {
@@ -27,7 +27,7 @@ class Home extends Component {
                     ]
                 },
                 {
-                    id : '2',
+                    id : 2,
                     name: 'Fittness',
                     todos: [
                         {
@@ -43,7 +43,7 @@ class Home extends Component {
                     ]
                 },
                 {
-                    id : '3',
+                    id : 3,
                     name: 'Trip Plan',
                     todos: [
                         {
@@ -63,7 +63,6 @@ class Home extends Component {
     }
     
     handelCardClick = (id) => {
-        console.log('Card got clicked', id);
         const selectedRoutine = this.state.routines.filter(routine => routine.id === id );
         this.setState({selectedRoutine: selectedRoutine})
         this.props.history.push(this.props.match.url + '/handler')
@@ -80,11 +79,29 @@ class Home extends Component {
         this.setState({routines : routines});
     }
     
+    onTodoAddClick = (todoName, currentRoutineId) => {
+        let foundIndex = this.state.routines.findIndex((routine) => routine.id === currentRoutineId)
+        const routines = [...this.state.routines];
+        const newRoutineId = routines[foundIndex].todos.length;
+        const newTodo = {
+            id :  newRoutineId + 1,
+            todo : todoName,
+            isCompleted : false
+        }
+        routines[foundIndex].todos.push(newTodo);
+        this.setState({routines : routines});
+    }
+
+    handelCardDelete = (id) => {
+        const newRoutines = this.state.routines.filter(routine => routine.id !== id );
+        this.setState({routines : newRoutines});
+    }
+    
     render() { 
         return ( 
             <div className={styles.HomeBody}>
-                <Route path='/home' exact component={() => <RoutineCards onAddRoutine={this.onAddRoutineHandler} handelCardClick={this.handelCardClick} routines={this.state.routines}/>} />
-                {(this.state.selectedRoutine != null) ? <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} />}/> : null}
+                <Route path='/home' exact component={() => <RoutineCards handelCardDeleteClick={this.handelCardDelete} onAddRoutine={this.onAddRoutineHandler} handelCardClick={this.handelCardClick} routines={this.state.routines}/>} />
+                {(this.state.selectedRoutine != null) ? <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} onAddRoutine={this.onTodoAddClick}/>}/> : null}
             </div> 
         );
     }

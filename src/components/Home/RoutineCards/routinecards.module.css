@@ -1,8 +1,19 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .CardsContainer {
     width: 100%;
-    height: 85%;
     padding: 1rem;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.AddRoutineContainer {
+    width: 100%;
+    display: flex;
     justify-content: center;
 }
