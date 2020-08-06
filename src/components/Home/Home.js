@@ -10,55 +10,12 @@ class Home extends Component {
         this.state = {
             selectedRoutine: null,
             routines : [
-                {
-                    id : 1,
-                    name: 'Career',
-                    todos: [
-                        {
-                            id: 1,
-                            todo: 'Learn DSA',
-                            isCompleted: false
-                        },
-                        {
-                            id: 2,
-                            todo: 'Learn web development',
-                            isCompleted: true
-                        }
-                    ]
-                },
-                {
-                    id : 2,
-                    name: 'Fittness',
-                    todos: [
-                        {
-                            id: 1,
-                            todo: 'Push up',
-                            isCompleted: false
-                        },
-                        {
-                            id: 2,
-                            todo: 'Pull up',
-                            isCompleted: true
-                        }
-                    ]
-                },
-                {
-                    id : 3,
-                    name: 'Trip Plan',
-                    todos: [
-                        {
-                            id: 1,
-                            todo: 'Search for hotels',
-                            isCompleted: false
-                        },
-                        {
-                            id: 2,
-                            todo: 'Book hotel',
-                            isCompleted: true
-                        }
-                    ]
-                }
-            ]
+                // {
+                //     id : ,
+                //     name : ,
+                //     todos : [ {id: , todo, isCompleted}...]
+                // },...
+            ]   
         }
     }
     
@@ -96,12 +53,22 @@ class Home extends Component {
         const newRoutines = this.state.routines.filter(routine => routine.id !== id );
         this.setState({routines : newRoutines});
     }
+
+    todoDeleteHandler = (id) => {
+        let foundIndex = this.state.routines.findIndex((routine) => routine.id === this.state.selectedRoutine[0].id);
+        const newTodos = this.state.routines[foundIndex].todos.filter((todo) => todo.id !== id);
+        const modifiedRoutine = this.state.routines[foundIndex];
+        modifiedRoutine.todos = newTodos;
+        const newRoutines = this.state.routines.filter(routine => routine.id !== this.state.selectedRoutine[0].id);
+        newRoutines.push(modifiedRoutine);
+        this.setState({routines : newRoutines});
+    }
     
     render() { 
         return ( 
             <div className={styles.HomeBody}>
                 <Route path='/home' exact component={() => <RoutineCards handelCardDeleteClick={this.handelCardDelete} onAddRoutine={this.onAddRoutineHandler} handelCardClick={this.handelCardClick} routines={this.state.routines}/>} />
-                {(this.state.selectedRoutine != null) ? <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} onAddRoutine={this.onTodoAddClick}/>}/> : null}
+                {(this.state.selectedRoutine != null) ? <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} onAddRoutine={this.onTodoAddClick} todoDeleteHandler={this.todoDeleteHandler}/>}/> : null}
             </div> 
         );
     }

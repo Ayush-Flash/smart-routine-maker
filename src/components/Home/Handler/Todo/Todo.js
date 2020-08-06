@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from './todo.module.css';
 const todo = (props) => {
+
+    const handelDelete = () => {
+        props.todoDeleteHandler(props.todo.id);
+    }
+
     return ( 
         <div className={styles.TodoCardContainer}>
             <input type="checkbox" className={styles.TodoCheckBox}/>
             <p className={styles.TodoClassName}>{props.todo.todo}</p>
-            <button className={styles.DeleteTodo}>Delete</button>
+            <button onClick={handelDelete} className={styles.DeleteTodo}>Delete</button>
         </div>
     );
 }
