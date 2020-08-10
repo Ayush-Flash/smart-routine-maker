@@ -10,16 +10,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      username : '',
       isUserSignedIn: false
     }
   }
 
-  logInHandler = () => {
-    this.setState({isUserSignedIn : true});
+  authHandler = (username) => {
+    this.setState({
+      username : username,
+      isUserSignedIn : true
+    });
   }
 
   logOutHandler = () => {
-    this.setState({isUserSignedIn : false});
+    this.setState({
+      username : '',
+      isUserSignedIn : false
+    });
   }
 
   render() {
@@ -31,12 +38,14 @@ class App extends Component {
             (!this.state.isUserSignedIn) ? 
             <div>
               <Switch>
-                <Route path='/register' exact component={RegForm} />           
-                <Route path='/' component={() => <LoginForm logInHandler={this.logInHandler}/>} />
+                <Route path='/register' exact component={() => <RegForm authHandler={this.authHandler}/>} />           
+                <Route path='/' component={() => <LoginForm authHandler={this.authHandler}/>} />
               </Switch>
             </div> 
             : <div>
-                <Route path='/home' component={Home} />
+                <Route path='/' exact component={() => <LoginForm authHandler={this.authHandler}/>} />
+                <Route path='/register' exact component={() => <RegForm authHandler={this.authHandler}/>} />           
+                <Route path='/home' component={() => <Home username={this.state.username}/>} />
                 <Redirect to='/home' />
               </div>
           }  

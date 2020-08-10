@@ -22,9 +22,25 @@ class LoginForm extends Component {
         event.preventDefault();
         const { username, password } = this.state; 
         if(username.length > 0 && password.length > 0) {
-            console.log(username, password);
             //do validation over here....(http request to our restAPI) then do the following
-            this.props.logInHandler();
+            fetch('http://localhost:5000/login',{
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify({
+                    username : username,
+                    password : password
+                })
+            }).then(res => res.json())
+            .then(data => {
+                if (data.auth === true) {
+                    this.props.authHandler(data.username);
+                } else {
+                    alert("Authentication Failed : Wrong login/password");
+                }
+            })
+            .catch(err => console.log(err));
         }        
     }
     
