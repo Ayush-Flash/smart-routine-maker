@@ -10,7 +10,7 @@ const routineCards = (props) => {
                     <AddRoutine placeholderText={'Add your plan title...'} onAddRoutine={props.onAddRoutine}/>
             </div>
             <div className={styles.CardsContainer}>
-                {props.routines.map(routine => <RoutineCard handelCardClick={props.handelCardClick} handelCardDeleteClick={props.handelCardDeleteClick} key={routine.id} routine={routine} />)}
+                {props.routines.map(routine => <RoutineCard handelCardClick={props.handelCardClick} handelCardDeleteClick={props.handelCardDeleteClick} key={routine._id} routine={routine} />)}
             </div>
         </div>
     );

@@ -12,7 +12,7 @@ const addRoutine = (props) => {
     const onRoutineAddClick = () => {
         if(routineNameInput.length > 0) {
             if(props.match.url === '/home/handler') {
-                props.onAddRoutine(routineNameInput, props.selectedRoutine.id) 
+                props.onAddRoutine(routineNameInput, props.selectedRoutine._id) 
             } else {
                 props.onAddRoutine(routineNameInput);
             }

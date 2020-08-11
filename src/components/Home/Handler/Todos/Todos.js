@@ -3,9 +3,9 @@ import Todo from '../Todo/Todo';
 import styles from './todos.module.css';
 
 const todos = (props) => {
-    return (  
+    return (
         <div className={styles.TodosContainer}>
-            {props.todos.map(todo => <Todo key={todo.id} todoDeleteHandler={props.todoDeleteHandler} todo={todo} />)}
+            {props.todos.map(todo => <Todo key={todo._id} todoDeleteHandler={props.todoDeleteHandler} todo={todo} />)}
         </div>
     );
 }

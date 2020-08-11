@@ -3,7 +3,7 @@ import styles from './todo.module.css';
 const todo = (props) => {
 
     const handelDelete = () => {
-        props.todoDeleteHandler(props.todo.id);
+        props.todoDeleteHandler(props.todo._id);
     }
 
     return ( 

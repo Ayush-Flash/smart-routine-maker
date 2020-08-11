@@ -6,13 +6,13 @@ class RoutineCard extends Component {
     render() { 
         return ( 
             <div className={styles.Container}>
-                <div onClick={() => this.props.handelCardClick(this.props.routine.id)} className={styles.CardContainer}>
+                <div onClick={() => this.props.handelCardClick(this.props.routine._id)} className={styles.CardContainer}>
                     <div className={styles.InnerTopContainer}>
                         <p className={styles.RoutineName}>{this.props.routine.name}</p>
                     </div>
                     <hr />
                 </div>
-                <button className={styles.DeleteRoutineCard} onClick={() => this.props.handelCardDeleteClick(this.props.routine.id)}>x</button>
+                <button className={styles.DeleteRoutineCard} onClick={() => this.props.handelCardDeleteClick(this.props.routine._id)}>x</button>
             </div> 
         );
     }
