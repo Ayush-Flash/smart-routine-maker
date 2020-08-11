@@ -116,6 +116,17 @@ class Home extends Component {
         .catch(err => console.log(err));
     }
 
+    onTodoCheckHandler = (value, todo_id) => {
+        let foundIndex = this.state.routines.findIndex((routine) => routine._id === this.state.selectedRoutine[0]._id);
+        const updatedTodo = this.state.routines[foundIndex].todos.filter((todo) => todo._id === todo_id);
+        updatedTodo[0].isCompleted = value;
+        const newRoutine = this.state.routines[foundIndex];
+        const midlleTodos = newRoutine.todos.filter(todo => todo._id !== todo_id);
+        midlleTodos.push(updatedTodo);
+        const finalRoutines = this.state.routines.filter(routine => routine._id !== this.state.selectedRoutine[0]._id)
+        finalRoutines.push(newRoutine);
+        this.setState({routines : finalRoutines});
+    }
 
     todoDeleteHandler = (_id) => {
 
@@ -148,7 +159,7 @@ class Home extends Component {
         return ( 
             <div className={styles.HomeBody}>
                 <Route path='/home' exact component={() => <RoutineCards handelCardDeleteClick={this.handelCardDelete} onAddRoutine={this.onAddRoutineHandler} handelCardClick={this.handelCardClick} routines={this.state.routines}/>} />
-                <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} onAddRoutine={this.onTodoAddClick} todoDeleteHandler={this.todoDeleteHandler}/>}/>
+                {(this.state.selectedRoutine !== null) ? <Route path={ this.props.match.url + '/handler'} exact component={() => <Handler selectedRoutine={this.state.selectedRoutine} onAddRoutine={this.onTodoAddClick} todoDeleteHandler={this.todoDeleteHandler} onTodoCheckHandler={this.onTodoCheckHandler} />} /> : null}
             </div> 
         );
     }

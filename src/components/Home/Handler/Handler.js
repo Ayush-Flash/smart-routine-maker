@@ -11,7 +11,7 @@ class Handler extends Component {
         return ( 
             <div className={styles.HandlerContainer}>
                 <AddRoutine placeholderText={'Add your task...'} selectedRoutine={this.props.selectedRoutine[0]} onAddRoutine={this.props.onAddRoutine}/>
-                <Todos todoDeleteHandler={this.props.todoDeleteHandler} todos={this.props.selectedRoutine[0].todos}/>
+                <Todos todoDeleteHandler={this.props.todoDeleteHandler} todos={this.props.selectedRoutine[0].todos} onTodoCheckHandler={this.props.onTodoCheckHandler}/>
             </div> 
         );
     }
