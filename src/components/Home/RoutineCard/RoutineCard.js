@@ -3,6 +3,7 @@ import styles from  './routinecard.module.css';
 
 class RoutineCard extends Component {
     state = {  }
+    
     render() { 
         return ( 
             <div className={styles.Container}>
@@ -11,6 +12,8 @@ class RoutineCard extends Component {
                         <p className={styles.RoutineName}>{this.props.routine.name}</p>
                     </div>
                     <hr />
+                    <div className={styles.InnerBottomContainer}>
+                    </div>
                 </div>
                 <button className={styles.DeleteRoutineCard} onClick={() => this.props.handelCardDeleteClick(this.props.routine._id)}>x</button>
             </div> 

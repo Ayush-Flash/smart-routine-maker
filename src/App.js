@@ -4,14 +4,27 @@ import LoginForm from './components/LoginForm/LoginForm';
 import RegForm from './components/RegForm/RegForm';
 import Home from './components/Home/Home';
 import { Route, Switch, Redirect } from 'react-router-dom';
-
+import Particles from 'react-particles-js';
+import styles from './app.module.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username : '',
-      isUserSignedIn: false
+      username : 'Ayush',
+      isUserSignedIn: true
+    }
+  }
+
+  particlesOptions = {
+    particles: {
+        number: {
+            value: 25,
+            density: {
+                enable: true,
+                value_area: 150
+            }
+        }
     }
   }
 
@@ -33,6 +46,7 @@ class App extends Component {
     const mapping = (!this.state.isUserSignedIn) ? {'/': 'Login', '/register': 'Register'} : {'/': 'Logout'}; 
     return (
       <div className="App">
+        <Particles className={styles.Particles} params={this.particlesOptions}/>
         <Navbar isUserSignedIn={this.state.isUserSignedIn} logOutHandler={this.logOutHandler} mapping={mapping}/>
           {
             (!this.state.isUserSignedIn) ? 

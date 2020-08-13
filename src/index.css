@@ -6,5 +6,6 @@
 }
 
 body {
-  background: linear-gradient(83deg, rgba(143,3,119,1) 0%, rgba(68,111,208,1) 42%, rgba(119,50,164,1) 90%);
+  /* background: linear-gradient(83deg, rgba(143,3,119,1) 0%, rgba(68,111,208,1) 42%, rgba(119,50,164,1) 90%); */
+  background-color: #5cdb95;
 }
