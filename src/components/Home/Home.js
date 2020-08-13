@@ -117,19 +117,34 @@ class Home extends Component {
     }
 
     onTodoCheckHandler = (value, todo_id) => {
-        let foundIndex = this.state.routines.findIndex((routine) => routine._id === this.state.selectedRoutine[0]._id);
-        const updatedTodo = this.state.routines[foundIndex].todos.filter((todo) => todo._id === todo_id);
-        updatedTodo[0].isCompleted = value;
-        const newRoutine = this.state.routines[foundIndex];
-        const midlleTodos = newRoutine.todos.filter(todo => todo._id !== todo_id);
-        midlleTodos.push(updatedTodo);
-        const finalRoutines = this.state.routines.filter(routine => routine._id !== this.state.selectedRoutine[0]._id)
-        finalRoutines.push(newRoutine);
-        this.setState({routines : finalRoutines});
+        fetch('http://localhost:5000/updateTodo', {
+            method : 'PUT',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body :  JSON.stringify({
+                "username" : this.props.username,
+                "routine_id" : this.state.selectedRoutine[0]._id,
+                "todo_id" : todo_id,
+                "isCompleted" : value
+            })
+        }).then(data => data.json())
+        .then(res => {
+            if(res.updated) {
+                let foundIndex = this.state.routines.findIndex((routine) => routine._id === this.state.selectedRoutine[0]._id);
+                const updatedTodo = this.state.routines[foundIndex].todos.filter((todo) => todo._id === todo_id);
+                updatedTodo[0].isCompleted = value;
+                const newRoutine = this.state.routines[foundIndex];
+                const midlleTodos = newRoutine.todos.filter(todo => todo._id !== todo_id);
+                midlleTodos.push(updatedTodo);
+                const finalRoutines = this.state.routines.filter(routine => routine._id !== this.state.selectedRoutine[0]._id)
+                finalRoutines.push(newRoutine);
+                this.setState({routines : finalRoutines});
+            }   
+        }).catch(err => console.log(err));
     }
 
     todoDeleteHandler = (_id) => {
-
         fetch('http://localhost:5000/deleteTodo', {
             method : 'PUT',
             headers : {
