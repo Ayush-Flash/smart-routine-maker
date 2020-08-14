@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgb(243, 239, 239);
+    background: #fff;
     box-shadow: 0px 14px 22px -3px rgba(0,0,0,0.75);
 }
 
@@ -15,7 +15,7 @@
     padding: 10px;
     border: none;
     outline: none;
-    background-color: rgb(243, 239, 239);;
+    background-color: #fff;
     border-bottom: 2px solid  rgb(143,3,119);
     text-align: left;
     font-size: 17px;

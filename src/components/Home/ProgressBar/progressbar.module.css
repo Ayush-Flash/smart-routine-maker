@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+.ProgressBarContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Percentage {
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-family: 'Pacifico', cursive;
+    font-size: large;
+}
+
+.Progress {
+    background-color: #d8d8d8;
+	border-radius: 20px;
+	height: 15px;
+	width: 100%
+}
+
+
+.ProgressDone {
+	background: linear-gradient(to left, #F2709C, #FF9472);
+	border-radius: 20px;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 0;
+	opacity: 0;
+	transition: 1s ease 0.3s;
+}
