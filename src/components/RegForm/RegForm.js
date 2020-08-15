@@ -42,7 +42,7 @@ class regForm extends Component {
             }).then(res => res.json())
             .then(data => {
                 if (data.registered === true) {
-                    this.props.authHandler(data.username);
+                    this.props.authHandler(username);
                 } else {
                     alert("Uername already exsit : please choose different username!");
                 }
