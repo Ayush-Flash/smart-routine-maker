@@ -20,7 +20,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/getRoutines', {
+        fetch('https://radiant-mountain-06539.herokuapp.com/getRoutines', {
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
@@ -43,7 +43,7 @@ class Home extends Component {
     }
     
     onAddRoutineHandler = (routineName) => {
-        fetch('http://localhost:5000/addRoutine', {
+        fetch('https://radiant-mountain-06539.herokuapp.com/addRoutine', {
             method : 'PUT',
             headers : {
                 'Content-Type' : 'application/json'
@@ -70,7 +70,7 @@ class Home extends Component {
     }
     
     handelCardDelete = (_id) => {
-        fetch('http://localhost:5000/deleteRoutine', {
+        fetch('https://radiant-mountain-06539.herokuapp.com/deleteRoutine', {
             method : 'PUT',
             headers : {
                 'Content-Type' : 'application/json'
@@ -95,7 +95,7 @@ class Home extends Component {
             todo : todoName,
             isCompleted : false
         }
-        fetch('http://localhost:5000/addTodo', {
+        fetch('https://radiant-mountain-06539.herokuapp.com/addTodo', {
             method : 'PUT',
             headers : {
                 'Content-Type' : 'application/json'
@@ -117,7 +117,7 @@ class Home extends Component {
     }
 
     onTodoCheckHandler = (value, todo_id) => {
-        fetch('http://localhost:5000/updateTodo', {
+        fetch('https://radiant-mountain-06539.herokuapp.com/updateTodo', {
             method : 'PUT',
             headers : {
                 'Content-Type' : 'application/json'
@@ -145,7 +145,7 @@ class Home extends Component {
     }
 
     todoDeleteHandler = (_id) => {
-        fetch('http://localhost:5000/deleteTodo', {
+        fetch('https://radiant-mountain-06539.herokuapp.com/deleteTodo', {
             method : 'PUT',
             headers : {
                 'Content-Type' : 'application/json'
