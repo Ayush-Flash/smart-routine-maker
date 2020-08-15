@@ -23,7 +23,7 @@ class LoginForm extends Component {
         const { username, password } = this.state; 
         if(username.length > 0 && password.length > 0) {
             //do validation over here....(http request to our restAPI) then do the following
-            fetch('http://localhost:5000/login',{
+            fetch('https://radiant-mountain-06539.herokuapp.com/login',{
                 method : 'POST',
                 headers : {
                     'Content-Type' : 'application/json'
