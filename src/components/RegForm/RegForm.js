@@ -28,7 +28,7 @@ class regForm extends Component {
         const { username, email, password } = this.state; 
         if(username.length > 0 && password.length > 0 && email.length > 0) {
             //do validation over here....(http request to our restAPI) then do the following
-            fetch('https://radiant-mountain-06539.herokuapp.com/register',{
+            fetch('http://localhost:5000/register',{
                 method : 'POST',
                 headers : {
                     'Content-Type' : 'application/json'
@@ -60,7 +60,7 @@ class regForm extends Component {
                     <p><input className={styles.FormInput} onChange={this.onUsernameChange} value={this.state.username} type='text' id='username' placeholder='Username'/></p>
                     <p><input className={styles.FormInput} onChange={this.onEmailChange} value={this.state.email} type='email' id='email' placeholder='Email'/></p>
                     <p><input className={styles.FormInput} onChange={this.onPasswordChange} value={this.state.password} type='password' id='password' placeholder='Password'/></p>
-                    <p><button className={styles.FormButton}>Register</button></p>
+                    <p><button className={styles.FormButton} type='submit'>Register</button></p>
                 </form>
             </div> 
         );
